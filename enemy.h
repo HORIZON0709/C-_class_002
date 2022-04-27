@@ -30,8 +30,6 @@ public:		/* メンバー関数宣言 */
 	void Uninit();					//終了
 	void Input();					//入力
 	void Output();					//出力
-	ENEMY_TYPE SelectEnemyType();	//敵の種類を選ぶ
-	int SetNumEnemy();				//敵の数を設定
 
 public:	/* 定数の定義 */
 	static const int MAX_ENEMY = 3;		//敵の最大数
