@@ -20,42 +20,43 @@
 //===================================================
 void main(void)
 {
-	CEnemy enemy;			//敵情報
-	CEnemyHuman enemyHuman;	//人型の敵情報
-	CEnemyBird enemyBird;	//鳥型の敵情報
+	CEnemy enemy;								//敵情報
+	CEnemyHuman enemyHuman[CEnemy::MAX_ENEMY];	//人型の敵情報
+	CEnemyBird enemyBird[CEnemy::MAX_ENEMY];	//鳥型の敵情報
 
-	//生成する敵を選択
-	CEnemy::ENEMY_TYPE nEnemyType = enemy.SelectEnemyType();
+	//敵の数を設定
+	int nNumEnemy = enemy.SetNumEnemy();
 
-	switch (nEnemyType)
+	for (int i = 0; i < nNumEnemy; i++)
 	{
-	case CEnemy::ENEMY_TYPE::HUMAN:		//人型
-		
-		enemyHuman.Init();	//初期化
-		enemyHuman.Input();	//入力
+		//現在の設定数を表示
+		printf("\n 《 %d体目 》", (i + 1));
 
-		//画面をクリア
-		system("cls");
+		//生成する敵を選択
+		CEnemy::ENEMY_TYPE nEnemyType = enemy.SelectEnemyType();
 
-		enemyHuman.Output();	//出力
-		enemyHuman.Uninit();	//終了
-		break;
+		switch (nEnemyType)
+		{
+		case CEnemy::ENEMY_TYPE::HUMAN:		/* 人型 */
 
-	case CEnemy::ENEMY_TYPE::BIRD:		//鳥型
-		
-		enemyBird.Init();	//初期化
-		enemyBird.Input();	//入力
+			enemyHuman[i].Init();		//初期化
+			enemyHuman[i].Input();		//入力
+			enemyHuman[i].Output();		//出力
+			enemyHuman[i].Uninit();		//終了
+			break;
 
-		//画面をクリア
-		system("cls");
+		case CEnemy::ENEMY_TYPE::BIRD:		/* 鳥型 */
 
-		enemyBird.Output();	//出力
-		enemyBird.Uninit();	//終了
-		break;
+			enemyBird[i].Init();	//初期化
+			enemyBird[i].Input();	//入力
+			enemyBird[i].Output();	//出力
+			enemyBird[i].Uninit();	//終了
+			break;
 
-	default:
-		assert(false);
-		break;
+		default:
+			assert(false);
+			break;
+		}
 	}
 
 	//終了メッセージ

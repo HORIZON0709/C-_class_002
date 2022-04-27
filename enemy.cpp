@@ -93,7 +93,7 @@ CEnemy::ENEMY_TYPE CEnemy::SelectEnemyType()
 		printf("\n 番号を入力 > ");
 		scanf("%d", &type);
 
-		if ((type >= ENEMY_TYPE::HUMAN) && (type <= ENEMY_TYPE::MAX))
+		if ((type > ENEMY_TYPE::NONE) && (type < ENEMY_TYPE::MAX))
 		{//範囲内
 			break;
 		}
@@ -113,6 +113,41 @@ CEnemy::ENEMY_TYPE CEnemy::SelectEnemyType()
 	}
 	
 	return type;	//選択した番号を返す
+}
+
+//===================================================
+//敵の数を設定
+//===================================================
+int CEnemy::SetNumEnemy()
+{
+	int nNumEnemy = 0;	//敵の数設定用
+
+	while (1)
+	{
+		//メッセージ
+		printf("\n 敵の数を入力( %d体まで ) > ", MAX_ENEMY);
+		scanf("%d", &nNumEnemy);
+
+		if ((nNumEnemy >= MIN_ENEMY) && (nNumEnemy <= MAX_ENEMY))
+		{//範囲内
+			break;
+		}
+
+		/* 範囲外 */
+
+		//メッセージ
+		printf("\n ※ 範囲外です。 ※");
+
+		//Enter入力待ち
+		printf("\n\n Press Enter");
+		rewind(stdin);
+		getchar();
+
+		//画面をクリア
+		system("cls");
+	}
+
+	return nNumEnemy;	//選択した番号を返す
 }
 
 /****************************** CEnemyHuman ******************************/
@@ -166,6 +201,9 @@ void CEnemyHuman::Input()
 	//歩くスピード
 	printf(" 歩くスピード > ");
 	scanf("%d", &m_nSpeedWalk);
+
+	//画面をクリア
+	system("cls");
 }
 
 //===================================================
@@ -178,6 +216,14 @@ void CEnemyHuman::Output()
 
 	//歩くスピード
 	printf(" 歩くスピード : %d ]\n", m_nSpeedWalk);
+
+	//Enter入力待ち
+	printf("\n\n Press Enter");
+	rewind(stdin);
+	getchar();
+
+	//画面をクリア
+	system("cls");
 }
 
 /****************************** CEnemyBird ******************************/
@@ -231,6 +277,9 @@ void CEnemyBird::Input()
 	//飛行スピード
 	printf(" 飛行スピード > ");
 	scanf("%d", &m_nSpeedFly);
+
+	//画面をクリア
+	system("cls");
 }
 
 //===================================================
@@ -243,4 +292,12 @@ void CEnemyBird::Output()
 
 	//飛行スピード
 	printf(" 飛行スピード : %d ]\n", m_nSpeedFly);
+
+	//Enter入力待ち
+	printf("\n\n Press Enter");
+	rewind(stdin);
+	getchar();
+
+	//画面をクリア
+	system("cls");
 }
