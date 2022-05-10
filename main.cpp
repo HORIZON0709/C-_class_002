@@ -214,6 +214,9 @@ int SetNumEnemy()
 		system("cls");
 	}
 
+	//‰æ–Ê‚ğƒNƒŠƒA
+	system("cls");
+
 	return nNumEnemy;	//‘I‘ğ‚µ‚½”Ô†‚ğ•Ô‚·
 }
 }// namespace‚Í‚±‚±‚Ü‚Å
